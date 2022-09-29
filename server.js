@@ -21,7 +21,8 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 app.get('/', async (request, response) => {
-  const todoItems = await db.collection('108-stars-of-destiny').find().toArray()
+  const todoItems = await db.collection('suikoden').find().toArray()
+  console.log(todoItems)
   const itemsLeft = await db
     .collection('todos')
     .countDocuments({ completed: false })

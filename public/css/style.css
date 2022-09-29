@@ -1,7 +1,15 @@
-h1{
-    color: red;
+.completed {
+  color: gray;
+  text-decoration: line-through;
 }
-.completed{
-    color: gray;
-    text-decoration: line-through;
+
+.item {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+}
+
+.character-name {
+  font-weight: bold;
+  font-size: 18px;
 }
