@@ -22,7 +22,6 @@ app.use(express.json())
 
 app.get('/', async (request, response) => {
   const todoItems = await db.collection('suikoden').find().toArray()
-  console.log(todoItems)
   const itemsLeft = await db
     .collection('todos')
     .countDocuments({ completed: false })
@@ -48,12 +47,12 @@ app.get('/', async (request, response) => {
 // })
 
 app.put('/markComplete', (request, response) => {
-  db.collection('todos')
+  db.collection('suikoden')
     .updateOne(
-      { thing: request.body.itemFromJS },
+      { name: request.body.itemFromJS },
       {
         $set: {
-          completed: true
+          recruited: true
         }
       },
       {
@@ -69,12 +68,12 @@ app.put('/markComplete', (request, response) => {
 })
 
 app.put('/markUnComplete', (request, response) => {
-  db.collection('todos')
+  db.collection('suikoden')
     .updateOne(
-      { thing: request.body.itemFromJS },
+      { name: request.body.itemFromJS },
       {
         $set: {
-          completed: false
+          recruited: false
         }
       },
       {
@@ -85,16 +84,6 @@ app.put('/markUnComplete', (request, response) => {
     .then((result) => {
       console.log('Marked Complete')
       response.json('Marked Complete')
-    })
-    .catch((error) => console.error(error))
-})
-
-app.delete('/deleteItem', (request, response) => {
-  db.collection('todos')
-    .deleteOne({ thing: request.body.itemFromJS })
-    .then((result) => {
-      console.log('Todo Deleted')
-      response.json('Todo Deleted')
     })
     .catch((error) => console.error(error))
 })

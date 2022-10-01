@@ -25,10 +25,17 @@
         <ul class="todoItems">
           <% for(let i=0; i < items.length; i++) {%>
           <li class="item">
+            <% if(items[i].recruited === true) {%>
+            <span class="character-name completed"><%= items[i].name %></span>
+            <span class="recruitment-info"
+              >Recruit:"<%= items[i].recruitment %>"</span
+            >
+            <% }else{ %>
             <span class="character-name"><%= items[i].name %></span>
             <span class="recruitment-info"
               >Recruit:"<%= items[i].recruitment %>"</span
             >
+            <% } %>
           </li>
           <% } %>
         </ul>
