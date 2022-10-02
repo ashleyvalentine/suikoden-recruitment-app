@@ -27,13 +27,11 @@
           <li class="item">
             <% if(items[i].recruited === true) {%>
             <span class="character-name completed"><%= items[i].name %></span>
-            <span class="recruitment-info"
-              >Recruit:"<%= items[i].recruitment %>"</span
-            >
+            <span class="recruited">Recruited</span>
             <% }else{ %>
             <span class="character-name"><%= items[i].name %></span>
             <span class="recruitment-info"
-              >Recruit:"<%= items[i].recruitment %>"</span
+              >Recruit: "<%= items[i].recruitment %>"</span
             >
             <% } %>
           </li>

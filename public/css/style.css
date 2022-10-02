@@ -1,6 +1,5 @@
 .completed {
-  color: gray;
-  text-decoration: line-through;
+  color: darkgreen;
 }
 
 .item {
@@ -12,4 +11,8 @@
 .character-name {
   font-weight: bold;
   font-size: 18px;
+}
+
+.recruited {
+  font-style: italic;
 }
