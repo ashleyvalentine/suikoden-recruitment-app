@@ -34,7 +34,12 @@
               >Recruit: "<%= items[i].recruitment %>"</span
             >
             <% } %>
+            <span class="notes">Notes: <% items[i].notes %></span>
           </li>
+          <form action=<%= `/addTodo/${items[i]["_id"]}` %> method="POST">
+            <input type="text" placeholder="Add note" name="todoItem" />
+            <input type="submit" />
+          </form>
           <% } %>
         </ul>
 

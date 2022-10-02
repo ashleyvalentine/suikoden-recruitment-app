@@ -36,15 +36,24 @@ app.get('/', async (request, response) => {
   // .catch(error => console.error(error))
 })
 
-// app.post('/addTodo', (request, response) => {
-//   db.collection('todos')
-//     .insertOne({ thing: request.body.todoItem, completed: false })
-//     .then((result) => {
-//       console.log('Todo Added')
-//       response.redirect('/')
-//     })
-//     .catch((error) => console.error(error))
-// })
+app.post('/addTodo/:noteId', (request, response) => {
+  const noteId = request.params
+  console.log(noteId)
+  db.collection('suikoden')
+    .updateOne(
+      { _id: noteId },
+      {
+        $set: {
+          notes: request.body.todoItem
+        }
+      }
+    )
+    .then((result) => {
+      console.log('Todo Added')
+      response.redirect('/')
+    })
+    .catch((error) => console.error(error))
+})
 
 app.put('/markComplete', (request, response) => {
   db.collection('suikoden')
